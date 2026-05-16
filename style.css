@@ -6,7 +6,7 @@
     --text-light: #FFFFFF;
     
     /* Typography */
-    --font-sans: 'Outfit', sans-serif;
+    --font-sans: 'Manrope', sans-serif;
     --font-serif: 'Playfair Display', serif;
 }
 
@@ -424,5 +424,66 @@ body {
         right: 0;
         height: 1px;
         background-color: rgba(0, 0, 0, 0.1);
+    }
+    }
+}
+
+/* --- Quote Section --- */
+.quote-section {
+    padding: 8rem 4rem;
+    background-color: #0A192F; /* Deep Navy */
+    text-align: center;
+}
+
+.quote-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quote-divider {
+    width: 60px;
+    height: 1px;
+    background-color: #CBA052; /* Elegant Muted Gold */
+}
+
+.quote-divider.top {
+    margin-bottom: 3.5rem;
+}
+
+.quote-divider.bottom {
+    margin-top: 3.5rem;
+}
+
+.quote-text {
+    font-family: var(--font-serif);
+    font-size: 2.25rem;
+    font-style: italic;
+    font-weight: 400;
+    color: #FFFFFF;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.quote-citation {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #CBA052;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-style: normal;
+    margin-top: 2rem;
+}
+
+/* Responsive Quote Section */
+@media (max-width: 768px) {
+    .quote-section {
+        padding: 5rem 2rem;
+    }
+    .quote-text {
+        font-size: 1.75rem;
     }
 }
