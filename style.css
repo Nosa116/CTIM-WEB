@@ -80,7 +80,8 @@ body {
     align-items: center;
     padding: 1.25rem 4rem;
     background-color: var(--bg-light);
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 100;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -651,5 +652,304 @@ body {
         flex-direction: column;
         text-align: center;
         gap: 1rem;
+    }
+}
+
+/* --- Visit Section --- */
+.visit-section {
+    padding: 6rem 4rem;
+    background-color: var(--surface-container-low);
+}
+
+.visit-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-style: normal;
+    margin-top: 2rem;
+}
+
+/* Responsive Quote Section */
+@media (max-width: 768px) {
+    .quote-section {
+        padding: 5rem 2rem;
+    }
+    .quote-text {
+        font-size: 1.75rem;
+    }
+}
+
+/* --- Footer Section --- */
+.footer {
+    background-color: #06111F; /* Very dark navy to anchor the page */
+    color: #FFFFFF;
+    padding: 6rem 4rem 2rem 4rem;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+.footer-logo {
+    height: 48px;
+    margin-bottom: 1.5rem;
+    /* Uses a CSS filter to make the SVG white, as the background is very dark */
+    filter: brightness(0) invert(1); 
+}
+
+.footer-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1.5rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: var(--primary-accent);
+    transform: translateY(-2px);
+}
+
+.footer-heading {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #FFFFFF;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-accent);
+}
+
+.newsletter-form {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.03);
+    color: #FFFFFF;
+    border-radius: 50px 0 0 50px;
+    font-family: var(--font-sans);
+    outline: none;
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.newsletter-form button {
+    padding: 0.8rem 1.5rem;
+    background-color: var(--primary-accent);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 0 50px 50px 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: #005F9E;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-legal {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-legal a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+    color: #FFFFFF;
+}
+
+@media (max-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 4rem 2rem 2rem 2rem;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+}
+
+/* --- Visit Section --- */
+.visit-section {
+    padding: 6rem 4rem;
+    background-color: #050505; /* Very dark background */
+    color: #ffffff;
+}
+
+.visit-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.visit-section-title {
+    font-family: var(--font-sans);
+    font-size: 2.25rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
+.visit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem; /* Small gap between tiles */
+}
+
+.visit-card {
+    position: relative;
+    height: 400px; /* Tall tiles */
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px; /* Slight rounding */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.visit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Gradient overlay for readability */
+.visit-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.4) 30%,
+        transparent 100%
+    );
+    z-index: 1;
+}
+
+.visit-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    z-index: 2;
+    text-align: left;
+}
+
+.visit-heading {
+    font-family: var(--font-sans);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
+}
+
+.visit-location {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
+}
+
+@media (max-width: 1024px) {
+    .visit-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    .visit-card {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .visit-section {
+        padding: 4rem 2rem;
+    }
+    .visit-grid {
+        grid-template-columns: 1fr;
+    }
+    .visit-card {
+        height: 300px;
     }
 }
