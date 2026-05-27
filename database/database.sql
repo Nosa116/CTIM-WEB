@@ -75,4 +75,39 @@ ALTER TABLE `admin_users`
 --
 ALTER TABLE `sermons`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faith_clinic_members`
+--
+
+CREATE TABLE IF NOT EXISTS `faith_clinic_members` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `phone` varchar(50) DEFAULT NULL,
+  `address` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faith_clinic_cases`
+--
+
+CREATE TABLE IF NOT EXISTS `faith_clinic_cases` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `member_id` int(11) NOT NULL,
+  `case_date` date NOT NULL,
+  `narration` text NOT NULL,
+  `remark` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `member_id` (`member_id`),
+  CONSTRAINT `fk_faith_clinic_cases_member` FOREIGN KEY (`member_id`) REFERENCES `faith_clinic_members` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 COMMIT;
+
