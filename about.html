@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christ Temple International Ministry</title>
+    <title>About Us - Christ Temple International Ministry</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,12 +16,14 @@
     <nav class="navbar">
         <div class="nav-left">
             <div class="logo-container">
-                <img src="assets/images/Christ Temple logo.svg" alt="Christ Temple International Ministry">
+                <a href="index.html">
+                    <img src="assets/images/Christ Temple logo.svg" alt="Christ Temple International Ministry">
+                </a>
             </div>
             <div class="nav-divider"></div>
             <ul class="nav-menu">
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="about.html">About us</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About us</a></li>
                 <li><a href="sermons.html">Sermons</a></li>
                 <li><a href="#">Visit</a></li>
                 <li><a href="#">Contact us</a></li>
@@ -38,39 +40,80 @@
         </button>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
-            
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    Connecting You to <br>
-                    <span class="serif-italic">Faith, Community, & Hope</span>
-                </h1>
-                
-                <p class="hero-subtitle">
-                    Discover a welcoming community, inspiring sermons, <br>
-                    and ways to connect and grow in faith.
-                </p>
-                
-                <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary">
-                        Visit Church <span class="arrow">&rarr;</span>
-                    </a>
-                    <a href="sermons.html" class="btn btn-ghost">
-                        Watch Sermons
-                    </a>
-                </div>
-            </div>
-
-
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h1 class="about-hero-title">
+                Our Story, <br>
+                <span class="serif-italic">Our Faith, & Our Community</span>
+            </h1>
+            <p class="about-hero-subtitle">
+                Discover who we are, what we believe, and the mission driving our ministry.
+            </p>
         </div>
     </section>
 
-    <!-- Values Section -->
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="story-container">
+            <div class="story-content">
+                <span class="story-tag">Who We Are</span>
+                <h2 class="story-title">
+                    Connecting You to <br>
+                    <span class="serif-italic">Faith, Community, & Hope</span>
+                </h2>
+                <p class="story-text">
+                    Christ Temple International Ministry was founded with a clear, heaven-born mandate: to make Christ known, to establish believers in their faith, and to build a vibrant, loving community that reflects the light of God. Over the years, we have grown into a diverse family representing people from all walks of life, united by our devotion to Jesus.
+                </p>
+                <p class="story-highlight">
+                    "We are not just a church; we are a family where you can belong, grow, and serve the purpose of God for your generation."
+                </p>
+                <p class="story-text">
+                    Whether you are seeking answers, looking for a spiritual home, or desiring to deepen your walk with God, Christ Temple is a place where you will receive sound biblical teaching, experience genuine fellowship, and find opportunities to make a difference in our world.
+                </p>
+            </div>
+            <div class="story-image-wrapper">
+                <img src="assets/images/pexels-caleboquendo-34612562.jpg" alt="CTIM Worship Sanctuary">
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="mission-vision-section">
+        <div class="mission-vision-container">
+            <!-- Mission Card -->
+            <div class="mv-card">
+                <div class="mv-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <h3 class="mv-heading">Our Mission</h3>
+                <p class="mv-text">
+                    To preach the uncompromised gospel of Jesus Christ, build a community of committed disciples, and reach the world with the transforming message of love, healing, and salvation.
+                </p>
+            </div>
+
+            <!-- Vision Card -->
+            <div class="mv-card">
+                <div class="mv-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                </div>
+                <h3 class="mv-heading">Our Vision</h3>
+                <p class="mv-text">
+                    To see lives transformed by the power of the Holy Spirit, establishing strong families, vibrant local assemblies, and a lasting legacy of faith that influences generations to come.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section (Reusing index.html styles) -->
     <section class="values-section">
         <div class="values-container">
-            <h2 class="section-title">OUR VALUES</h2>
+            <h2 class="section-title">OUR CORE VALUES</h2>
             
             <div class="values-grid">
                 <!-- Value 1 -->
@@ -103,54 +146,80 @@
         </div>
     </section>
 
-    <!-- Quote Section -->
-    <section class="quote-section">
-        <div class="quote-container">
-            <div class="quote-divider top"></div>
-            
-            <blockquote class="quote-text">
-                "For where two or three are gathered in my name,<br>
-                there am I among them."
-            </blockquote>
-            
-            <cite class="quote-citation">&mdash; MATTHEW 18:20</cite>
-            
-            <div class="quote-divider bottom"></div>
+    <!-- Leadership Section -->
+    <section class="leadership-section">
+        <div class="leadership-container">
+            <div class="leadership-header">
+                <span class="leadership-tag">Our Leadership</span>
+                <h2 class="leadership-title">
+                    Servants of God, <br>
+                    <span class="serif-italic">Leading with Love & Grace</span>
+                </h2>
+            </div>
+
+            <div class="leadership-grid">
+                <!-- Leader 1 -->
+                <div class="leader-card">
+                    <div class="leader-image-container">
+                        <img src="assets/images/pastor_portrait.png" alt="Pastor Emmanuel Mensah">
+                    </div>
+                    <div class="leader-info">
+                        <span class="leader-role">Senior Pastor</span>
+                        <h3 class="leader-name">Pastor Emmanuel Mensah</h3>
+                        <p class="leader-bio">
+                            Pastor Emmanuel has been serving Christ Temple for over 15 years, leading with a passion for teaching the word of God and nurturing the local community.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Leader 2 -->
+                <div class="leader-card">
+                    <div class="leader-image-container">
+                        <img src="assets/images/pastor_deborah.png" alt="Pastor Deborah Mensah">
+                    </div>
+                    <div class="leader-info">
+                        <span class="leader-role">Co-Pastor</span>
+                        <h3 class="leader-name">Pastor Deborah Mensah</h3>
+                        <p class="leader-bio">
+                            Pastor Deborah leads the women's and outreach ministries, dedicated to empowering individuals and families through active community care.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Leader 3 -->
+                <div class="leader-card">
+                    <div class="leader-image-container">
+                        <img src="assets/images/pastor_michael.png" alt="Pastor Michael Cole">
+                    </div>
+                    <div class="leader-info">
+                        <span class="leader-role">Youth Pastor</span>
+                        <h3 class="leader-name">Pastor Michael Cole</h3>
+                        <p class="leader-bio">
+                            Pastor Michael leads the youth and young adults ministry, bringing vibrant energy, relatable teaching, and creative programs to CTIM's next generation.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Plan a Visit Section -->
-    <section class="visit-section">
-        <div class="visit-container">
-            <h2 class="visit-section-title">PLAN A VISIT</h2>
-            
-            <div class="visit-grid">
-                <!-- Branch 1 -->
-                <div class="visit-card" style="background-image: url('assets/images/port_harcourt.png');">
-                    <div class="visit-overlay"></div>
-                    <div class="visit-content">
-                        <h3 class="visit-heading">Living Waters Fountain</h3>
-                        <p class="visit-location">Port Harcourt</p>
-                    </div>
-                </div>
-
-                <!-- Branch 2 -->
-                <div class="visit-card" style="background-image: url('assets/images/baruwa_lagos.png');">
-                    <div class="visit-overlay"></div>
-                    <div class="visit-content">
-                        <h3 class="visit-heading">Church of His Majesty</h3>
-                        <p class="visit-location">Baruwa, Lagos</p>
-                    </div>
-                </div>
-
-                <!-- Branch 3 -->
-                <div class="visit-card" style="background-image: url('assets/images/orelope_lagos.png');">
-                    <div class="visit-overlay"></div>
-                    <div class="visit-content">
-                        <h3 class="visit-heading">City Of God</h3>
-                        <p class="visit-location">Orelope, Lagos</p>
-                    </div>
-                </div>
+    <!-- Call to Action Section -->
+    <section class="about-cta">
+        <div class="about-cta-container">
+            <h2 class="about-cta-title">
+                Come and Experience <br>
+                <span class="serif-italic">God's Presence With Us</span>
+            </h2>
+            <p class="about-cta-text">
+                Whether you're visiting for the first time or looking for a church family to call home, we can't wait to welcome you this Sunday.
+            </p>
+            <div class="about-cta-buttons">
+                <a href="#" class="btn btn-primary">
+                    Plan a Visit <span class="arrow">&rarr;</span>
+                </a>
+                <a href="sermons.html" class="btn btn-ghost">
+                    Browse Sermons
+                </a>
             </div>
         </div>
     </section>
@@ -186,7 +255,7 @@
                     <h4 class="footer-heading">Explore</h4>
                     <ul class="footer-links">
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="#">Sermons & Messages</a></li>
+                        <li><a href="sermons.html">Sermons & Messages</a></li>
                         <li><a href="#">Plan a Visit</a></li>
                         <li><a href="#">Upcoming Events</a></li>
                     </ul>
