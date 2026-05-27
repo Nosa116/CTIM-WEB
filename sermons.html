@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="sermons-page">
 
@@ -17,7 +17,7 @@
         <div class="nav-left">
             <div class="logo-container">
                 <a href="index.html">
-                    <img src="Christ Temple logo.svg" alt="Christ Temple International Ministry">
+                    <img src="assets/images/Christ Temple logo.svg" alt="Christ Temple International Ministry">
                 </a>
             </div>
             <div class="nav-divider"></div>
@@ -99,86 +99,9 @@
             <div class="sermons-section">
                 <h2 class="section-heading">Latest Sermons</h2>
                 
-                <div class="sermons-grid">
-                    <!-- Sermon Card 1 -->
-                    <div class="sermon-card" onclick="playSermon('The Original', 'Apostle Emmanuel', '1Hr 4Mins')">
-                        <div class="sermon-image">
-                            <img src="pexels-caleboquendo-34612562.jpg" alt="The Original">
-                            <div class="sermon-duration">1Hr 4Mins</div>
-                            <div class="sermon-play-overlay">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M8 5v14l11-7z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="sermon-details">
-                            <h3 class="sermon-title">The Original</h3>
-                            <div class="sermon-meta">
-                                <span class="sermon-category">Purpose</span>
-                                <span class="sermon-date">May 10th</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sermon Card 2 -->
-                    <div class="sermon-card" onclick="playSermon('Enemies Of Purpose', 'Pastor John', '1Hr 2Mins')">
-                        <div class="sermon-image">
-                            <img src="pexels-caleboquendo-34612562.jpg" alt="Enemies Of Purpose" style="filter: hue-rotate(90deg);">
-                            <div class="sermon-duration">1Hr 2Mins</div>
-                            <div class="sermon-play-overlay">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M8 5v14l11-7z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="sermon-details">
-                            <h3 class="sermon-title">Enemies Of Purpose</h3>
-                            <div class="sermon-meta">
-                                <span class="sermon-category">Purpose</span>
-                                <span class="sermon-date">May 6th</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sermon Card 3 -->
-                    <div class="sermon-card" onclick="playSermon('The Ultimate Search', 'Guest Speaker', '1Hr 5Mins')">
-                        <div class="sermon-image">
-                            <img src="pexels-caleboquendo-34612562.jpg" alt="The Ultimate Search" style="filter: hue-rotate(180deg);">
-                            <div class="sermon-duration">1Hr 5Mins</div>
-                            <div class="sermon-play-overlay">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M8 5v14l11-7z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="sermon-details">
-                            <h3 class="sermon-title">The Ultimate Search</h3>
-                            <div class="sermon-meta">
-                                <span class="sermon-category">Purpose</span>
-                                <span class="sermon-date">May 3rd</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sermon Card 4 -->
-                    <div class="sermon-card" onclick="playSermon('The Utter Helplessness of Man', 'Apostle Emmanuel', '1Hr 18Mins')">
-                        <div class="sermon-image">
-                            <img src="pexels-caleboquendo-34612562.jpg" alt="The Utter Helplessness of Man" style="filter: hue-rotate(270deg);">
-                            <div class="sermon-duration">1Hr 18Mins</div>
-                            <div class="sermon-play-overlay">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M8 5v14l11-7z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="sermon-details">
-                            <h3 class="sermon-title">The Utter Helplessness of Man - ELF Europe</h3>
-                            <div class="sermon-meta">
-                                <span class="sermon-category">ELF</span>
-                                <span class="sermon-date">Apr 25th</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="sermons-grid" id="sermonsGrid">
+                    <!-- Sermons loaded dynamically via JavaScript -->
+                    <p style="grid-column: 1 / -1; text-align: center; color: var(--on-surface-variant); padding: 2rem;">Loading sermons...</p>
                 </div>
             </div>
         </section>
@@ -188,7 +111,7 @@
     <div class="audio-player" id="globalAudioPlayer">
         <div class="player-info">
             <div class="player-cover">
-                <img src="pexels-caleboquendo-34612562.jpg" alt="Cover" id="playerImage">
+                <img src="assets/images/pexels-caleboquendo-34612562.jpg" alt="Cover" id="playerImage">
             </div>
             <div class="player-text">
                 <h4 id="playerTitle">Select a sermon to play</h4>
@@ -269,7 +192,61 @@
                     navbar.classList.toggle('mobile-open');
                 });
             }
+
+            // Fetch public sermons dynamically
+            fetchSermons();
         });
+
+        async function fetchSermons() {
+            try {
+                const response = await fetch('api/get_sermons.php?limit=20');
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    const grid = document.getElementById('sermonsGrid');
+                    grid.innerHTML = '';
+                    
+                    if (result.data.length === 0) {
+                        grid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: var(--on-surface-variant); padding: 2rem;">No sermons available yet.</p>';
+                        return;
+                    }
+                    
+                    result.data.forEach(sermon => {
+                        // Using a dummy duration for now since it's not calculated on backend
+                        const duration = "1Hr 0Mins"; 
+                        
+                        // We safely escape strings by passing them as arguments if needed, 
+                        // but template literals inside onclick is fine for simple strings if sanitized
+                        const cleanTitle = sermon.title.replace(/'/g, "\\'");
+                        const cleanSpeaker = sermon.speaker.replace(/'/g, "\\'");
+
+                        grid.innerHTML += `
+                            <div class="sermon-card" onclick="playSermon('${cleanTitle}', '${cleanSpeaker}', '${duration}')">
+                                <div class="sermon-image">
+                                    <img src="${sermon.cover_image_path}" alt="${sermon.title}">
+                                    <div class="sermon-duration">${duration}</div>
+                                    <div class="sermon-play-overlay">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="sermon-details">
+                                    <h3 class="sermon-title">${sermon.title}</h3>
+                                    <div class="sermon-meta">
+                                        <span class="sermon-category">${sermon.category}</span>
+                                        <span class="sermon-date">${sermon.formatted_date}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching public sermons:', error);
+                document.getElementById('sermonsGrid').innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: var(--error); padding: 2rem;">Error loading sermons.</p>';
+            }
+        }
     </script>
 </body>
 </html>
