@@ -120,6 +120,9 @@
         </div>
         
         <div class="player-controls">
+            <button class="control-btn" id="btnRewind" aria-label="Rewind 10 seconds" title="Rewind 10s">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6 8.5 6zm1-12l8.5 6-8.5 6V6z"/></svg>
+            </button>
             <button class="control-btn" aria-label="Previous">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
             </button>
@@ -129,13 +132,18 @@
             <button class="control-btn" aria-label="Next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
             </button>
+            <button class="control-btn" id="btnFastForward" aria-label="Fast Forward 10 seconds" title="Fast Forward 10s">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/></svg>
+            </button>
         </div>
         
         <div class="player-progress">
             <span class="time-current">0:00</span>
             <div class="progress-bar-container">
                 <div class="progress-bar">
-                    <div class="progress-filled" style="width: 0%;"></div>
+                    <div class="progress-filled" style="width: 0%;">
+                        <div class="progress-thumb"></div>
+                    </div>
                 </div>
             </div>
             <span class="time-total" id="playerDuration">0:00</span>
@@ -150,32 +158,91 @@
     </div>
 
     <script>
+        const audio = new Audio();
         let isPlaying = false;
+        let isDragging = false;
+        
         const player = document.getElementById('globalAudioPlayer');
         const playBtn = document.getElementById('playPauseBtn');
+        const playerImage = document.getElementById('playerImage');
+        const playerTitle = document.getElementById('playerTitle');
+        const playerSpeaker = document.getElementById('playerSpeaker');
+        const playerDuration = document.getElementById('playerDuration');
+        
+        const timeCurrent = document.querySelector('.time-current');
+        const progressContainer = document.querySelector('.progress-bar-container');
+        const progressFilled = document.querySelector('.progress-filled');
+        
+        const volumeSlider = document.querySelector('.volume-slider');
+        const volumeFilled = document.querySelector('.volume-filled');
 
-        function playSermon(title, speaker, duration) {
-            document.getElementById('playerTitle').textContent = title;
-            document.getElementById('playerSpeaker').textContent = speaker;
-            document.getElementById('playerDuration').textContent = duration;
+        const btnFastForward = document.getElementById('btnFastForward');
+        const btnRewind = document.getElementById('btnRewind');
+
+        let activeCategory = 'All';
+        let activeSearch = '';
+
+        // Play a sermon (called on sermon card click)
+        function playSermon(title, speaker, audioUrl, coverUrl) {
+            playerTitle.textContent = title;
+            playerSpeaker.textContent = speaker;
+            if (coverUrl) {
+                playerImage.src = coverUrl;
+            } else {
+                playerImage.src = 'assets/images/pexels-caleboquendo-34612562.jpg';
+            }
             
-            // Show player if hidden
+            // Set audio source
+            audio.src = audioUrl;
+            audio.load();
+            
+            // Show player drawer
             player.classList.add('active');
             
-            // Toggle play state
-            isPlaying = true;
-            updatePlayButton();
-            
-            // In a real app, we would start playing the audio here
+            // Play audio
+            audio.play()
+                .then(() => {
+                    isPlaying = true;
+                    updatePlayButton();
+                })
+                .catch(err => {
+                    console.error("Audio playback error:", err);
+                    alert("Could not load or play audio. Please check the file format or link.");
+                });
         }
 
+        // Toggle Play/Pause on player control click
         playBtn.addEventListener('click', () => {
-            if (document.getElementById('playerTitle').textContent !== 'Select a sermon to play') {
-                isPlaying = !isPlaying;
+            if (audio.src) {
+                if (isPlaying) {
+                    audio.pause();
+                    isPlaying = false;
+                } else {
+                    audio.play();
+                    isPlaying = true;
+                }
                 updatePlayButton();
             }
         });
 
+        // Fast Forward & Rewind event listeners
+        if (btnFastForward) {
+            btnFastForward.addEventListener('click', () => {
+                if (audio.src && !isNaN(audio.duration)) {
+                    audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+                }
+            });
+        }
+
+        if (btnRewind) {
+            btnRewind.addEventListener('click', () => {
+                if (audio.src && !isNaN(audio.duration)) {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                }
+            });
+        }
+
+        // Update Play/Pause button icons
         function updatePlayButton() {
             if (isPlaying) {
                 playBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
@@ -183,8 +250,103 @@
                 playBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
             }
         }
-        let activeCategory = 'All';
-        let activeSearch = '';
+
+        // Helper to format seconds to MM:SS
+        function formatTime(secs) {
+            if (isNaN(secs)) return "0:00";
+            const m = Math.floor(secs / 60);
+            const s = Math.floor(secs % 60);
+            return `${m}:${s < 10 ? '0' : ''}${s}`;
+        }
+
+        // Audio Events
+        audio.addEventListener('loadedmetadata', () => {
+            playerDuration.textContent = formatTime(audio.duration);
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            if (!isDragging) {
+                timeCurrent.textContent = formatTime(audio.currentTime);
+                if (audio.duration) {
+                    const percent = (audio.currentTime / audio.duration) * 100;
+                    progressFilled.style.width = `${percent}%`;
+                }
+            }
+        });
+
+        audio.addEventListener('ended', () => {
+            isPlaying = false;
+            updatePlayButton();
+            progressFilled.style.width = '0%';
+            timeCurrent.textContent = '0:00';
+        });
+
+        // Advanced Progress Drag Scrubbing & Clicking
+        if (progressContainer) {
+            const handleScrub = (e) => {
+                if (!audio.src || isNaN(audio.duration)) return 0;
+                const rect = progressContainer.getBoundingClientRect();
+                const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+                const clickX = clientX - rect.left;
+                const width = rect.width;
+                let clickPercent = clickX / width;
+                clickPercent = Math.max(0, Math.min(1, clickPercent)); // Clamp between 0 and 1
+                
+                progressFilled.style.width = `${clickPercent * 100}%`;
+                const tempTime = clickPercent * audio.duration;
+                timeCurrent.textContent = formatTime(tempTime);
+                
+                return tempTime;
+            };
+
+            progressContainer.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                handleScrub(e);
+            });
+
+            progressContainer.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                handleScrub(e);
+            }, { passive: true });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    handleScrub(e);
+                }
+            });
+
+            document.addEventListener('touchmove', (e) => {
+                if (isDragging) {
+                    handleScrub(e);
+                }
+            }, { passive: true });
+
+            const stopDragging = (e) => {
+                if (isDragging) {
+                    const finalTime = handleScrub(e);
+                    if (finalTime !== undefined) {
+                        audio.currentTime = finalTime;
+                    }
+                    isDragging = false;
+                }
+            };
+
+            document.addEventListener('mouseup', stopDragging);
+            document.addEventListener('touchend', stopDragging);
+        }
+
+        // Volume Adjustments
+        if (volumeSlider) {
+            volumeSlider.addEventListener('click', (e) => {
+                const rect = volumeSlider.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                let vol = clickX / width;
+                vol = Math.max(0, Math.min(1, vol)); // Clamp between 0 and 1
+                audio.volume = vol;
+                volumeFilled.style.width = `${vol * 100}%`;
+            });
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -239,15 +401,17 @@
                     }
                     
                     result.data.forEach(sermon => {
-                        // Using a dummy duration for now since it's not calculated on backend
-                        const duration = "1Hr 0Mins"; 
+                        // Dummy text duration or display nicely
+                        const duration = "Sermon Audio"; 
                         
                         // We safely escape strings
                         const cleanTitle = sermon.title.replace(/'/g, "\\'");
                         const cleanSpeaker = sermon.speaker.replace(/'/g, "\\'");
+                        const cleanAudio = sermon.audio_file_path.replace(/'/g, "\\'");
+                        const cleanCover = sermon.cover_image_path.replace(/'/g, "\\'");
 
                         grid.innerHTML += `
-                            <div class="sermon-card" onclick="playSermon('${cleanTitle}', '${cleanSpeaker}', '${duration}')">
+                            <div class="sermon-card" onclick="playSermon('${cleanTitle}', '${cleanSpeaker}', '${cleanAudio}', '${cleanCover}')">
                                 <div class="sermon-image">
                                     <img src="${sermon.cover_image_path}" alt="${sermon.title}">
                                     <div class="sermon-duration">${duration}</div>
