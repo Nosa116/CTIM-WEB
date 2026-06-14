@@ -1157,7 +1157,7 @@ body {
     position: relative;
     border-radius: 12px;
     overflow: hidden;
-    aspect-ratio: 1;
+    aspect-ratio: 16 / 9;
     background-color: var(--surface-container-highest);
 }
 
