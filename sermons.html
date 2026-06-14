@@ -121,7 +121,7 @@
         
         <div class="player-controls">
             <button class="control-btn" id="btnRewind" aria-label="Rewind 10 seconds" title="Rewind 10s">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6 8.5 6zm1-12l8.5 6-8.5 6V6z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20 18l-8.5-6L20 6v12zm-9-12v12l-8.5-6L11 6z"/></svg>
             </button>
             <button class="control-btn" aria-label="Previous">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
@@ -192,8 +192,8 @@
                 playerImage.src = 'assets/images/pexels-caleboquendo-34612562.jpg';
             }
             
-            // Set audio source
-            audio.src = audioUrl;
+            // Set audio source through streaming script to support HTTP Range requests (crucial for seeking & scrubbing)
+            audio.src = 'api/stream.php?file=' + encodeURIComponent(audioUrl);
             audio.load();
             
             // Show player drawer
@@ -286,7 +286,10 @@
             const handleScrub = (e) => {
                 if (!audio.src || isNaN(audio.duration)) return 0;
                 const rect = progressContainer.getBoundingClientRect();
-                const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+                const clientX = e.clientX || 
+                                (e.touches && e.touches[0] && e.touches[0].clientX) || 
+                                (e.changedTouches && e.changedTouches[0] && e.changedTouches[0].clientX) || 
+                                0;
                 const clickX = clientX - rect.left;
                 const width = rect.width;
                 let clickPercent = clickX / width;
