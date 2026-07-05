@@ -78,26 +78,44 @@
                 </div>
             </header>
 
-            <!-- Categories -->
-            <div class="categories-scroll">
-                <div class="categories-wrapper">
-                    <button class="category-pill active">All</button>
-                    <button class="category-pill">Good News</button>
-                    <button class="category-pill">Salvation</button>
-                    <button class="category-pill">Jesus Love</button>
-                    <button class="category-pill">Forgiveness</button>
-                    <button class="category-pill">New Life</button>
-                    <button class="category-pill">Hope</button>
-                    <button class="category-pill">Grace</button>
-                    <button class="category-pill">The Cross</button>
-                    <button class="category-pill">Healing</button>
-                    <button class="category-pill">Faith</button>
-                </div>
-            </div>
+
 
             <!-- Latest Sermons -->
             <div class="sermons-section">
-                <h2 class="section-heading">Latest Sermons</h2>
+                <div class="sermons-section-header">
+                    <h2 class="section-heading">Latest Sermons</h2>
+                    <div class="sermons-controls">
+                        <div class="control-group">
+                            <label for="sortSelect" class="control-label">Sort by</label>
+                            <select id="sortSelect" class="control-select">
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                                <option value="title_asc">Title (A-Z)</option>
+                                <option value="title_desc">Title (Z-A)</option>
+                            </select>
+                        </div>
+                        <div class="view-toggle">
+                            <button class="view-btn active" id="btnGridView" title="Grid View" aria-label="Grid View">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                            </button>
+                            <button class="view-btn" id="btnListView" title="List View" aria-label="List View">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                                    <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                    <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                    <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="sermons-grid" id="sermonsGrid">
                     <!-- Sermons loaded dynamically via JavaScript -->
@@ -181,6 +199,8 @@
 
         let activeCategory = 'All';
         let activeSearch = '';
+        let activeSort = localStorage.getItem('sermons_sort') || 'newest';
+        let activeView = localStorage.getItem('sermons_view') || 'grid';
 
         // Play a sermon (called on sermon card click)
         function playSermon(title, speaker, audioUrl, coverUrl) {
@@ -253,7 +273,7 @@
 
         // Helper to format seconds to MM:SS
         function formatTime(secs) {
-            if (isNaN(secs)) return "0:00";
+            if (secs === undefined || isNaN(secs)) return "0:00";
             const m = Math.floor(secs / 60);
             const s = Math.floor(secs % 60);
             return `${m}:${s < 10 ? '0' : ''}${s}`;
@@ -374,16 +394,45 @@
                 });
             }
 
-            // Set up category pills listeners
-            const categoryPills = document.querySelectorAll('.category-pill');
-            categoryPills.forEach(pill => {
-                pill.addEventListener('click', () => {
-                    categoryPills.forEach(p => p.classList.remove('active'));
-                    pill.classList.add('active');
-                    activeCategory = pill.textContent.trim();
+
+
+            // Set up sort selector listener
+            const sortSelect = document.getElementById('sortSelect');
+            if (sortSelect) {
+                sortSelect.value = activeSort;
+                sortSelect.addEventListener('change', (e) => {
+                    activeSort = e.target.value;
+                    localStorage.setItem('sermons_sort', activeSort);
                     fetchSermons();
                 });
-            });
+            }
+
+            // Set up view layout toggles
+            const grid = document.getElementById('sermonsGrid');
+            const btnGridView = document.getElementById('btnGridView');
+            const btnListView = document.getElementById('btnListView');
+
+            function applyView(view) {
+                activeView = view;
+                localStorage.setItem('sermons_view', view);
+                if (view === 'list') {
+                    grid.classList.add('list-view');
+                    if (btnListView) btnListView.classList.add('active');
+                    if (btnGridView) btnGridView.classList.remove('active');
+                } else {
+                    grid.classList.remove('list-view');
+                    if (btnGridView) btnGridView.classList.add('active');
+                    if (btnListView) btnListView.classList.remove('active');
+                }
+            }
+
+            if (btnGridView && btnListView) {
+                btnGridView.addEventListener('click', () => applyView('grid'));
+                btnListView.addEventListener('click', () => applyView('list'));
+            }
+
+            // Apply saved layout view on load
+            applyView(activeView);
 
             // Fetch public sermons dynamically
             fetchSermons();
@@ -391,7 +440,7 @@
 
         async function fetchSermons() {
             try {
-                const response = await fetch(`api/get_sermons.php?limit=20&category=${encodeURIComponent(activeCategory)}&search=${encodeURIComponent(activeSearch)}`);
+                const response = await fetch(`api/get_sermons.php?limit=20&category=${encodeURIComponent(activeCategory)}&search=${encodeURIComponent(activeSearch)}&sort=${encodeURIComponent(activeSort)}`);
                 const result = await response.json();
                 
                 if (result.status === 'success') {

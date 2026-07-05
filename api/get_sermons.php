@@ -7,6 +7,7 @@ header('Content-Type: application/json');
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $category = isset($_GET['category']) ? trim($_GET['category']) : '';
 $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 20;
+$sort = isset($_GET['sort']) ? trim($_GET['sort']) : 'newest';
 
 $sql = "SELECT id, title, speaker, date_preached, category, cover_image_path, audio_file_path, created_at 
         FROM sermons 
@@ -22,7 +23,16 @@ if (!empty($category) && strtolower($category) !== 'all') {
     $sql .= " AND category = '$categoryEscaped'";
 }
 
-$sql .= " ORDER BY date_preached DESC, created_at DESC 
+$orderBy = "date_preached DESC, created_at DESC";
+if ($sort === 'oldest') {
+    $orderBy = "date_preached ASC, created_at ASC";
+} elseif ($sort === 'title_asc') {
+    $orderBy = "title ASC";
+} elseif ($sort === 'title_desc') {
+    $orderBy = "title DESC";
+}
+
+$sql .= " ORDER BY $orderBy 
         LIMIT $limit";
         
 $result = $conn->query($sql);
