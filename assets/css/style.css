@@ -1,10 +1,3 @@
-@font-face {
-    font-family: 'Ogg Ogg Regular';
-    src: url('../fonts/Ogg Ogg Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 :root {
     /* Color Palette */
     --surface: #f7f9fb;
@@ -64,7 +57,6 @@
     /* Typography */
     --font-sans: 'Manrope', sans-serif;
     --font-serif: 'Playfair Display', serif;
-    --font-ogg: 'Ogg Ogg Regular', serif;
 }
 
 * {
@@ -202,11 +194,10 @@ body {
 }
 
 .hero-title {
-    font-family: var(--font-ogg);
     color: var(--text-light);
-    font-size: 5rem;
+    font-size: 4.5rem;
     line-height: 1.1;
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
 }
@@ -323,7 +314,7 @@ body {
     }
 
     .hero-title {
-        font-size: 3.8rem;
+        font-size: 3.5rem;
     }
 
 }
@@ -373,7 +364,7 @@ body {
     }
 
     .hero-title {
-        font-size: 3rem;
+        font-size: 2.75rem;
     }
 
     .hero-buttons {
@@ -399,9 +390,8 @@ body {
 }
 
 .section-title {
-    font-family: var(--font-ogg);
-    font-size: 1.35rem;
-    font-weight: 500;
+    font-size: 1.15rem;
+    font-weight: 700;
     margin-bottom: 4rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -935,9 +925,9 @@ body {
 }
 
 .visit-section-title {
-    font-family: var(--font-ogg);
-    font-size: 2.5rem;
-    font-weight: 500;
+    font-family: var(--font-sans);
+    font-size: 2.25rem;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 2rem;
@@ -1186,9 +1176,8 @@ body {
 }
 
 .section-heading {
-    font-family: var(--font-ogg);
-    font-size: 1.75rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight: 700;
     margin-bottom: 1.5rem;
     color: var(--on-surface);
 }
@@ -2202,9 +2191,8 @@ body {
 }
 
 .about-hero-title {
-    font-family: var(--font-ogg);
-    font-size: 4.5rem;
-    font-weight: 500;
+    font-size: 4rem;
+    font-weight: 400;
     line-height: 1.1;
     margin-bottom: 1rem;
     letter-spacing: -0.01em;
@@ -2242,17 +2230,15 @@ body {
 }
 
 .story-tag {
-    font-family: var(--font-ogg);
-    font-size: 1.05rem;
-    font-weight: 500;
+    font-size: 0.9rem;
+    font-weight: 700;
     color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
 
 .story-title {
-    font-family: var(--font-ogg);
-    font-size: 3.3rem;
+    font-size: 3rem;
     line-height: 1.15;
     font-weight: 500;
     color: var(--text-dark);
@@ -2367,9 +2353,8 @@ body {
 }
 
 .leadership-tag {
-    font-family: var(--font-ogg);
-    font-size: 1.05rem;
-    font-weight: 500;
+    font-size: 0.9rem;
+    font-weight: 700;
     color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -2378,8 +2363,7 @@ body {
 }
 
 .leadership-title {
-    font-family: var(--font-ogg);
-    font-size: 3.3rem;
+    font-size: 3rem;
     font-weight: 500;
     color: var(--text-dark);
 }
@@ -2472,9 +2456,8 @@ body {
 }
 
 .about-cta-title {
-    font-family: var(--font-ogg);
-    font-size: 3.3rem;
-    font-weight: 500;
+    font-size: 3rem;
+    font-weight: 400;
     line-height: 1.2;
     margin-bottom: 1.5rem;
 }
@@ -2522,7 +2505,7 @@ body {
     }
 
     .about-hero-title {
-        font-size: 3rem;
+        font-size: 2.75rem;
     }
 
     .story-section {
@@ -2530,7 +2513,7 @@ body {
     }
 
     .story-title {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
     }
 
     .mission-vision-section {
@@ -2546,7 +2529,7 @@ body {
     }
 
     .leadership-title {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
     }
 
     .leadership-grid {
@@ -2563,7 +2546,7 @@ body {
     }
 
     .about-cta-title {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
     }
 
     .about-cta-buttons {
