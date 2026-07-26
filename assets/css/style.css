@@ -306,6 +306,44 @@ body {
     color: var(--on-surface);
     cursor: pointer;
     padding: 0.5rem;
+    border-radius: 8px;
+    z-index: 101;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.mobile-menu-btn:hover,
+.mobile-menu-btn:focus {
+    background-color: var(--surface-container-high);
+}
+
+.mobile-menu-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.navbar.mobile-open .mobile-menu-btn svg {
+    transform: rotate(90deg);
+}
+
+/* Mobile Menu Backdrop Overlay */
+.nav-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(6, 17, 31, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 98;
+}
+
+.nav-backdrop.active,
+body.menu-open .nav-backdrop {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* --- Responsive Design --- */
@@ -325,7 +363,6 @@ body {
     .hero-title {
         font-size: 3.5rem;
     }
-
 }
 
 @media (max-width: 768px) {
@@ -336,7 +373,9 @@ body {
     }
 
     .mobile-menu-btn {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .navbar {
@@ -349,13 +388,32 @@ body {
         top: 100%;
         left: 0;
         right: 0;
-        background-color: var(--bg-light);
+        background-color: var(--surface-container-lowest);
         flex-direction: column;
         padding: 1.5rem 2rem;
-        gap: 1.5rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        gap: 0.5rem;
+        border-bottom: 1px solid var(--outline-variant);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
         z-index: 99;
+        animation: fadeIn 0.25s ease-out;
+    }
+
+    .nav-menu li {
+        width: 100%;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+        background-color: var(--surface-container-low);
     }
 
     .navbar.mobile-open .nav-menu {
@@ -364,7 +422,8 @@ body {
 
     .hero {
         height: auto;
-        min-height: 100vh;
+        min-height: 80vh;
+        padding: 4rem 1.5rem;
     }
 
     .hero-container {
@@ -378,6 +437,7 @@ body {
 
     .hero-buttons {
         flex-direction: column;
+        gap: 0.75rem;
     }
 
     .btn {
@@ -3231,4 +3291,187 @@ body {
 
 .map-container-link:hover .overlay-text {
     transform: translateY(0);
+}
+
+/* ==========================================================================
+   Comprehensive Mobile Phone & Small Screen Responsive Enhancements (<600px, <480px, <360px)
+   ========================================================================== */
+
+@media (max-width: 600px) {
+    /* General Container Padding */
+    .values-section,
+    .quote-section,
+    .visit-section,
+    .story-section,
+    .mission-vision-section,
+    .leadership-section,
+    .about-cta,
+    .visit-locations-section,
+    .what-to-expect-section,
+    .plan-visit-form-section {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+    }
+
+    /* Navbar Small Screen Adjustments */
+    .navbar {
+        padding: 0.85rem 1.25rem;
+    }
+
+    .logo-container {
+        height: 36px;
+    }
+
+    /* Hero Typography Sizing */
+    .hero-title,
+    .about-hero-title,
+    .visit-hero-title,
+    .sermons-hero-title {
+        font-size: 2.25rem !important;
+        line-height: 1.15;
+    }
+
+    .hero-subtitle,
+    .about-hero-subtitle,
+    .visit-hero-subtitle {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 1.75rem;
+    }
+
+    .section-title,
+    .story-title,
+    .leadership-title,
+    .visit-page-title,
+    .expect-section-title,
+    .plan-title,
+    .about-cta-title {
+        font-size: 1.85rem !important;
+        line-height: 1.2;
+    }
+
+    /* Cards & Container Padding */
+    .mv-card,
+    .location-info-card,
+    .form-wrapper,
+    .expect-card,
+    .login-card {
+        padding: 1.5rem 1.25rem !important;
+        border-radius: 12px;
+    }
+
+    /* Sermons Search & Filter Layout */
+    .sermons-section-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .sermons-controls {
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .control-group {
+        flex: 1;
+        min-width: 140px;
+    }
+
+    .control-select {
+        width: 100%;
+    }
+
+    /* Sermons Grid Small Phones */
+    .sermons-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    /* Fixed Audio Player Mobile Layout */
+    .audio-player {
+        height: 80px;
+        padding: 0 1rem;
+    }
+
+    .player-info {
+        width: auto;
+        flex: 1;
+        min-width: 0;
+        gap: 0.75rem;
+    }
+
+    .player-cover {
+        width: 44px;
+        height: 44px;
+        flex-shrink: 0;
+    }
+
+    .player-text h4 {
+        font-size: 0.85rem;
+    }
+
+    .player-text p {
+        font-size: 0.75rem;
+    }
+
+    .play-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .control-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Footer Newsletter Form */
+    .newsletter-form {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .newsletter-form input {
+        border-radius: 50px !important;
+        width: 100%;
+    }
+
+    .newsletter-form button {
+        border-radius: 50px !important;
+        width: 100%;
+        padding: 0.75rem 1rem;
+    }
+
+    /* Map Height */
+    .map-embed-container iframe {
+        height: 250px !important;
+    }
+
+    /* Table Mobile Touch Scroll */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 -0.5rem;
+    }
+
+    .admin-table {
+        min-width: 580px;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero-title,
+    .about-hero-title,
+    .visit-hero-title {
+        font-size: 1.85rem !important;
+    }
+
+    .btn {
+        padding: 0.85rem 1.25rem;
+        font-size: 0.9rem;
+    }
+
+    .tab-btn {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
 }

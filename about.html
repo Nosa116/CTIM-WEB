@@ -40,8 +40,8 @@
                 stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-        </button>
     </nav>
+    <div class="nav-backdrop" id="navBackdrop"></div>
 
     <!-- About Hero Section -->
     <section class="about-hero">
@@ -330,12 +330,33 @@
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navbar = document.querySelector('.navbar');
+            const navBackdrop = document.getElementById('navBackdrop');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+
+            function toggleMenu(open) {
+                const isOpen = open !== undefined ? open : !navbar.classList.contains('mobile-open');
+                navbar.classList.toggle('mobile-open', isOpen);
+                if (navBackdrop) navBackdrop.classList.toggle('active', isOpen);
+                document.body.classList.toggle('menu-open', isOpen);
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+                }
+            }
 
             if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    navbar.classList.toggle('mobile-open');
+                mobileMenuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleMenu();
                 });
             }
+
+            if (navBackdrop) {
+                navBackdrop.addEventListener('click', () => toggleMenu(false));
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => toggleMenu(false));
+            });
         });
     </script>
 </body>
