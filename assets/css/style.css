@@ -2982,11 +2982,26 @@ body.menu-open .nav-backdrop {
 }
 
 .expect-card {
+    position: relative;
     background-color: var(--surface-container-low);
-    padding: 2.5rem;
+    padding: 3rem 2.5rem;
     border-radius: 16px;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     border: 1px solid rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+}
+
+.expect-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: var(--primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .expect-card:hover {
@@ -2996,27 +3011,25 @@ body.menu-open .nav-backdrop {
     border-color: rgba(0, 124, 189, 0.1);
 }
 
-.expect-icon-wrapper {
-    width: 60px;
-    height: 60px;
-    background-color: rgba(0, 124, 189, 0.1);
+.expect-card:hover::before {
+    transform: scaleX(1);
+}
+
+.expect-number {
+    font-family: var(--font-ogg);
+    font-size: 3rem;
+    font-weight: 500;
     color: var(--primary);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.75rem;
-    transition: all 0.3s ease;
+    opacity: 0.15;
+    display: block;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.expect-card:hover .expect-icon-wrapper {
-    background-color: var(--primary);
-    color: var(--on-primary);
-}
-
-.expect-icon-wrapper svg {
-    width: 32px;
-    height: 32px;
+.expect-card:hover .expect-number {
+    opacity: 0.8;
+    transform: scale(1.05);
 }
 
 .expect-title {
