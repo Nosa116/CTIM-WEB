@@ -82,6 +82,11 @@ body {
     overflow-x: hidden;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-ogg);
+    font-weight: normal;
+}
+
 /* --- Navigation --- */
 .navbar {
     display: flex;
@@ -212,7 +217,7 @@ body {
 }
 
 .hero-title .serif-italic {
-    font-family: var(--font-serif);
+    font-family: var(--font-ogg);
     font-style: italic;
     font-weight: 400;
 }
@@ -631,7 +636,7 @@ body.menu-open .nav-backdrop {
 }
 
 .quote-text {
-    font-family: var(--font-serif);
+    font-family: var(--font-ogg);
     font-size: 2.25rem;
     font-style: italic;
     font-weight: 400;
@@ -2317,7 +2322,7 @@ body.menu-open .nav-backdrop {
 }
 
 .about-hero-title .serif-italic {
-    font-family: var(--font-serif);
+    font-family: var(--font-ogg);
     font-style: italic;
 }
 
@@ -2363,7 +2368,7 @@ body.menu-open .nav-backdrop {
 }
 
 .story-title .serif-italic {
-    font-family: var(--font-serif);
+    font-family: var(--font-ogg);
     font-style: italic;
 }
 
@@ -2374,7 +2379,7 @@ body.menu-open .nav-backdrop {
 }
 
 .story-highlight {
-    font-family: var(--font-serif);
+    font-family: var(--font-ogg);
     font-style: italic;
     font-size: 1.4rem;
     line-height: 1.5;
@@ -2485,7 +2490,7 @@ body.menu-open .nav-backdrop {
 }
 
 .leadership-title .serif-italic {
-    font-family: var(--font-serif);
+    font-family: var(--font-ogg);
     font-style: italic;
 }
 
@@ -2579,7 +2584,7 @@ body.menu-open .nav-backdrop {
 }
 
 .about-cta-title .serif-italic {
-    font-family: var(--font-serif);
+    font-family: var(--font-ogg);
     font-style: italic;
 }
 
