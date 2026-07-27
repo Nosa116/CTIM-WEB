@@ -2342,30 +2342,37 @@ body.menu-open .nav-backdrop {
 }
 
 .story-container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 6rem;
-    align-items: center;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: start;
 }
 
-.story-content {
+.story-left {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+}
+
+.story-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
 }
 
 .story-tag {
     font-size: 0.9rem;
     font-weight: 700;
     color: var(--primary);
-
     letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 .story-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
     line-height: 1.15;
     font-weight: 500;
     color: var(--text-dark);
@@ -2385,26 +2392,30 @@ body.menu-open .nav-backdrop {
 .story-highlight {
     font-family: var(--font-ogg);
     font-style: italic;
-    font-size: 1.4rem;
-    line-height: 1.5;
+    font-size: 1.45rem;
+    line-height: 1.55;
     color: var(--primary);
-    border-left: 3px solid var(--primary);
-    padding-left: 1.5rem;
-    margin: 1rem 0;
+    background-color: rgba(0, 98, 151, 0.03);
+    border-left: 4px solid var(--primary);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
 }
 
-.story-image-wrapper {
-    position: relative;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-}
+@media (max-width: 900px) {
+    .story-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
 
-.story-image-wrapper img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
+    .story-right {
+        margin-top: 0;
+    }
+
+    .story-highlight {
+        font-size: 1.3rem;
+        padding: 1.5rem;
+    }
 }
 
 /* Mission & Vision cards */
