@@ -580,29 +580,33 @@ body.menu-open .nav-backdrop {
 
 /* Responsive Values Section */
 @media (max-width: 1024px) {
-    .values-grid {
-        grid-template-columns: 1fr;
-        gap: 4rem;
-    }
-
     .value-card {
-        padding: 0;
+        flex: 0 0 50%;
+        padding: 0 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .value-card {
+        flex: 0 0 100%;
+        padding: 0 1.25rem;
     }
 
-    .value-card:not(:first-child)::before {
-        display: none;
-        /* Hide vertical borders */
+    .values-header {
+        margin-bottom: 2.5rem;
     }
 
-    /* Horizontal divider for mobile */
-    .value-card:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        bottom: -2rem;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background-color: rgba(0, 0, 0, 0.1);
+    .value-heading {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .value-number {
+        font-size: 2.75rem;
+    }
+
+    .slider-dots-container {
+        margin-top: 2rem;
     }
 }
 
