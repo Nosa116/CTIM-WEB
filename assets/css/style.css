@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Ogg';
     src: url('../fonts/Ogg-Regular.ttf') format('truetype'),
-         url('../fonts/Ogg Ogg Regular.ttf') format('truetype');
+        url('../fonts/Ogg Ogg Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -450,7 +450,6 @@ body.menu-open .nav-backdrop {
 .values-section {
     padding: 6rem 4rem;
     background-color: var(--surface);
-    /* #f7f9fb */
 }
 
 .values-container {
@@ -459,43 +458,70 @@ body.menu-open .nav-backdrop {
 }
 
 .section-title {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: 4rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 0;
     color: var(--text-dark);
+    line-height: 1.15;
 }
 
-.values-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
+/* --- What We Believe Slider Styling --- */
+.values-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.slider-controls {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.slider-arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background-color: transparent;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.slider-arrow:hover:not(:disabled) {
+    background-color: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.slider-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.beliefs-slider-viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+.beliefs-slider-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
 }
 
 .value-card {
+    flex: 0 0 33.333333%;
+    min-width: 0;
+    box-sizing: border-box;
     padding: 0 4rem;
     position: relative;
-}
-
-/* Vertical dividers */
-.value-card:not(:first-child)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 1px;
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-/* Fix padding for first card to align left */
-.value-card:first-child {
-    padding-left: 0;
-}
-
-.value-card:last-child {
-    padding-right: 0;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .value-number {
@@ -510,7 +536,6 @@ body.menu-open .nav-backdrop {
 .value-heading {
     font-size: 2.25rem;
     font-weight: 700;
-    text-transform: uppercase;
     line-height: 1.1;
     margin-bottom: 1.5rem;
     color: var(--text-dark);
@@ -521,6 +546,31 @@ body.menu-open .nav-backdrop {
     font-size: 1.05rem;
     line-height: 1.6;
     color: var(--on-surface-variant);
+}
+
+.slider-dots-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 3.5rem;
+}
+
+.slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.15);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.slider-dot.active {
+    width: 28px;
+    border-radius: 10px;
+    background-color: var(--primary);
 }
 
 /* Responsive Values Section */
@@ -595,7 +645,7 @@ body.menu-open .nav-backdrop {
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--primary);
-    text-transform: uppercase;
+
     letter-spacing: 0.15em;
     font-style: normal;
     margin-top: 2rem;
@@ -794,7 +844,7 @@ body.menu-open .nav-backdrop {
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--primary);
-    text-transform: uppercase;
+
     letter-spacing: 0.15em;
     font-style: normal;
     margin-top: 2rem;
@@ -994,11 +1044,10 @@ body.menu-open .nav-backdrop {
 }
 
 .visit-section-title {
-    font-family: var(--font-sans);
-    font-size: 2.25rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-family: var(--font-ogg);
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.15;
     margin-bottom: 2rem;
     color: #ffffff;
 }
@@ -1863,7 +1912,7 @@ body.menu-open .nav-backdrop {
     font-weight: 700;
     color: var(--primary);
     letter-spacing: 0.05em;
-    text-transform: uppercase;
+
     font-size: 0.85rem;
 }
 
@@ -2106,7 +2155,7 @@ body.menu-open .nav-backdrop {
 .admin-table th {
     padding: 1rem;
     font-size: 0.85rem;
-    text-transform: uppercase;
+
     letter-spacing: 0.05em;
     color: var(--on-surface-variant);
     border-bottom: 2px solid var(--outline-variant);
@@ -2302,12 +2351,12 @@ body.menu-open .nav-backdrop {
     font-size: 0.9rem;
     font-weight: 700;
     color: var(--primary);
-    text-transform: uppercase;
+
     letter-spacing: 0.1em;
 }
 
 .story-title {
-    font-size: 3rem;
+    font-size: 2rem;
     line-height: 1.15;
     font-weight: 500;
     color: var(--text-dark);
@@ -2391,11 +2440,9 @@ body.menu-open .nav-backdrop {
 
 .mv-heading {
     font-size: 1.75rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 1.25rem;
     color: var(--text-dark);
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
 }
 
 .mv-text {
@@ -2425,14 +2472,14 @@ body.menu-open .nav-backdrop {
     font-size: 0.9rem;
     font-weight: 700;
     color: var(--primary);
-    text-transform: uppercase;
+
     letter-spacing: 0.1em;
     display: block;
     margin-bottom: 1rem;
 }
 
 .leadership-title {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 500;
     color: var(--text-dark);
 }
@@ -2488,7 +2535,7 @@ body.menu-open .nav-backdrop {
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--primary);
-    text-transform: uppercase;
+
     letter-spacing: 0.05em;
     display: block;
     margin-bottom: 0.5rem;
@@ -2665,12 +2712,10 @@ body.menu-open .nav-backdrop {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        to right,
-        rgba(6, 17, 31, 0.95) 0%,
-        rgba(6, 17, 31, 0.8) 50%,
-        rgba(6, 17, 31, 0.4) 100%
-    );
+    background: linear-gradient(to right,
+            rgba(6, 17, 31, 0.95) 0%,
+            rgba(6, 17, 31, 0.8) 50%,
+            rgba(6, 17, 31, 0.4) 100%);
     z-index: 1;
 }
 
@@ -2718,13 +2763,13 @@ body.menu-open .nav-backdrop {
     font-size: 0.9rem;
     font-weight: 700;
     color: var(--primary);
-    text-transform: uppercase;
+
     letter-spacing: 0.15em;
     margin-bottom: 1rem;
 }
 
 .visit-page-title {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 500;
     color: var(--text-dark);
 }
@@ -2895,7 +2940,7 @@ body.menu-open .nav-backdrop {
     font-size: 0.9rem;
     font-weight: 700;
     color: var(--primary);
-    text-transform: uppercase;
+
     letter-spacing: 0.15em;
     margin-bottom: 1rem;
     text-align: center;
@@ -2903,7 +2948,7 @@ body.menu-open .nav-backdrop {
 }
 
 .expect-section-title {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 500;
     color: var(--text-dark);
     text-align: center;
@@ -2988,13 +3033,13 @@ body.menu-open .nav-backdrop {
     font-size: 0.9rem;
     font-weight: 700;
     color: var(--primary);
-    text-transform: uppercase;
+
     letter-spacing: 0.15em;
     margin-bottom: 1rem;
 }
 
 .plan-title {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 500;
     color: var(--text-dark);
     margin-bottom: 1.25rem;
@@ -3140,6 +3185,7 @@ body.menu-open .nav-backdrop {
         opacity: 0;
         transform: translateY(15px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -3151,7 +3197,7 @@ body.menu-open .nav-backdrop {
     .expect-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .location-detail-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -3164,23 +3210,23 @@ body.menu-open .nav-backdrop {
         height: 50vh;
         min-height: 380px;
     }
-    
+
     .visit-hero-title {
         font-size: 2.75rem;
     }
-    
+
     .visit-locations-section,
     .what-to-expect-section,
     .plan-visit-form-section {
         padding: 5rem 2rem;
     }
-    
+
     .visit-page-title,
     .expect-section-title,
     .plan-title {
         font-size: 2.25rem;
     }
-    
+
     .locations-tabs {
         flex-direction: column;
         align-items: stretch;
@@ -3188,37 +3234,37 @@ body.menu-open .nav-backdrop {
         padding-bottom: 0;
         gap: 0.5rem;
     }
-    
+
     .tab-btn {
         padding: 1rem;
         background-color: var(--surface-container-lowest);
         border: 1px solid var(--outline-variant);
         border-radius: 8px;
     }
-    
+
     .tab-btn.active::after {
         display: none;
     }
-    
+
     .tab-btn.active {
         background-color: var(--primary);
         color: var(--on-primary);
         border-color: var(--primary);
     }
-    
+
     .location-info-card {
         padding: 2rem;
     }
-    
+
     .expect-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    
+
     .form-wrapper {
         padding: 2rem;
     }
-    
+
     .form-row {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -3298,6 +3344,7 @@ body.menu-open .nav-backdrop {
    ========================================================================== */
 
 @media (max-width: 600px) {
+
     /* General Container Padding */
     .values-section,
     .quote-section,
@@ -3343,6 +3390,7 @@ body.menu-open .nav-backdrop {
     .story-title,
     .leadership-title,
     .visit-page-title,
+    .visit-section-title,
     .expect-section-title,
     .plan-title,
     .about-cta-title {
@@ -3459,6 +3507,7 @@ body.menu-open .nav-backdrop {
 }
 
 @media (max-width: 380px) {
+
     .hero-title,
     .about-hero-title,
     .visit-hero-title {

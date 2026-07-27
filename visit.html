@@ -434,6 +434,26 @@
                 });
             });
 
+            // Check if there is a branch query param in the URL on load and activate corresponding tab
+            const urlParams = new URLSearchParams(window.location.search);
+            const branchParam = urlParams.get('branch');
+            if (branchParam) {
+                const targetBtn = document.querySelector(`.tab-btn[data-target="${branchParam}"]`);
+                if (targetBtn) {
+                    targetBtn.click();
+                    setTimeout(() => {
+                        const headerSection = document.querySelector('.visit-locations-header');
+                        if (headerSection) {
+                            headerSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }, 100);
+                    
+                    // Clean up URL
+                    const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                    window.history.replaceState({path:newUrl}, '', newUrl);
+                }
+            }
+
             // "Plan a Visit Here" Button click handler (autoselects branch in dropdown)
             const planButtons = document.querySelectorAll('.btn-plan-visit');
             const branchSelect = document.getElementById('branchSelect');
