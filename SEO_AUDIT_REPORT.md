@@ -1,7 +1,7 @@
 # Comprehensive Technical SEO, Schema & Google/Gemini Optimization Audit Report
 
 **Website:** Christ Temple International Ministry (CTIM)  
-**Canonical Domain:** `https://www.christtemple.org/`  
+**Canonical Domain:** `https://www.christtempleintl.org/`  
 **Audit & Implementation Date:** September 2026  
 **Status:** **Fully Optimized & Validated**  
 
@@ -39,7 +39,7 @@ All technical foundations, entity connections, pastoral leadership mappings, and
 - **Total Indexable Pages:** 5 (`index.html`, `about.html`, `visit.html`, `sermons.html`, `contact.html`)
 - **Noindex Directives:** 0 on public pages
 - **Disallowed in Robots.txt:** `/admin/`, `/api/`, `/config/`, `/database/` (protecting private backend scripts)
-- **Sitemap URL:** `https://www.christtemple.org/sitemap.xml`
+- **Sitemap URL:** `https://www.christtempleintl.org/sitemap.xml`
   - `/` (Priority: 1.0, Weekly)
   - `/about.html` (Priority: 0.9, Monthly)
   - `/visit.html` (Priority: 0.9, Weekly)
@@ -80,9 +80,9 @@ graph TD
 3. **`visit.html` (Multi-Branch Local SEO):**
    - `WebPage` linking to `#website`.
    - `BreadcrumbList` (Home > Plan a Visit).
-   - `PlaceOfWorship` (Port Harcourt Assembly — Living Waters Fountain) with address, phone, email, Google Maps URL, and opening hours specification.
-   - `PlaceOfWorship` (Baruwa Lagos Assembly — Church of His Majesty) with address, phone, email, Google Maps URL, and opening hours specification.
-   - `PlaceOfWorship` (Orelope Lagos Assembly — City Of God) with address, phone, email, Google Maps URL, and opening hours specification.
+   - `PlaceOfWorship` (Port Harcourt Assembly — Living Waters Fountain) with address, email, Google Maps URL, and opening hours specification.
+   - `PlaceOfWorship` (Baruwa Lagos Assembly — Church of His Majesty) with address, email, Google Maps URL, and opening hours specification.
+   - `PlaceOfWorship` (Orelope Lagos Assembly — City Of God) with address, email, Google Maps URL, and opening hours specification.
 4. **`sermons.html` (Media & Teachings):**
    - `CollectionPage` linking to `#church`.
    - `BreadcrumbList` (Home > Sermons & Messages).
@@ -115,10 +115,10 @@ To complete post-launch indexing:
 1. **Google Search Console Verification:**
    - Verify domain property in Google Search Console via DNS TXT record or HTML verification tag.
 2. **Submit XML Sitemap:**
-   - Submit `https://www.christtemple.org/sitemap.xml` in Search Console under **Sitemaps**.
+   - Submit `https://www.christtempleintl.org/sitemap.xml` in Search Console under **Sitemaps**.
 3. **Google Business Profile (Local SEO):**
-   - Claim and verify Google Business Profiles for all 3 branch addresses (Port Harcourt, Baruwa Lagos, Orelope Lagos) ensuring identical NAP (Name, Address, Phone) matching `SEO_SOURCE_OF_TRUTH.md`.
+   - Claim and verify Google Business Profiles for all 3 branch addresses (Port Harcourt, Baruwa Lagos, Orelope Lagos) ensuring identical NAP matching `SEO_SOURCE_OF_TRUTH.md`.
 4. **Bing Webmaster Tools:**
    - Import verification from Google Search Console and submit `sitemap.xml`.
 5. **Client Confirmation of Flagged Items:**
-   - Review and update placeholder phone numbers and historical founding details outlined in `SEO_INFORMATION_REQUIRING_VERIFICATION.md`.
+   - Review and update historical founding details outlined in `SEO_INFORMATION_REQUIRING_VERIFICATION.md`.

@@ -11,9 +11,9 @@ This document serves as the single centralized, authoritative record of verified
 | **Official Church Name** | Christ Temple International Ministry |
 | **Acronym / Short Name** | CTIM |
 | **Alternate Name** | Christ Temple Ministries |
-| **Official Domain / URL** | `https://www.christtemple.org/` |
-| **Primary Logo** | `https://www.christtemple.org/assets/images/Christ%20Temple%20logo.svg` |
-| **Social Share Image (PNG)**| `https://www.christtemple.org/assets/images/extracted_logo.png` |
+| **Official Domain / URL** | `https://www.christtempleintl.org/` |
+| **Primary Logo** | `https://www.christtempleintl.org/assets/images/Christ%20Temple%20logo.svg` |
+| **Social Share Image (PNG)**| `https://www.christtempleintl.org/assets/images/extracted_logo.png` |
 | **Tagline / Mandate** | Connecting You to Faith, Community, & Hope |
 | **Mission Statement** | To preach the uncompromised gospel of Jesus Christ, build a community of committed disciples, and prepare them for His soon return — reaching the world with the transforming message of love, healing, and salvation. |
 | **Vision Statement** | Lives transformed by the power of the Holy Spirit, establishing strong families, vibrant local assemblies, and a lasting legacy of faith that influences generations to come. |
