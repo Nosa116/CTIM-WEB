@@ -1,0 +1,18 @@
+# Robots.txt for Christ Temple International Ministry (CTIM)
+# Official Website: https://www.christtemple.org/
+
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /assets/css/
+Allow: /assets/images/
+Allow: /assets/fonts/
+
+# Disallow administrative and backend processing endpoints
+Disallow: /admin/
+Disallow: /api/
+Disallow: /config/
+Disallow: /database/
+
+# Sitemap Location
+Sitemap: https://www.christtemple.org/sitemap.xml

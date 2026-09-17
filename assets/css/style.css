@@ -3617,3 +3617,60 @@ body.menu-open .nav-backdrop {
         font-size: 0.9rem;
     }
 }
+
+/* --- SEO Breadcrumbs --- */
+.breadcrumb-nav {
+    padding: 1rem 4rem;
+    background-color: var(--surface-container-low, #f4f6f8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.breadcrumb-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.88rem;
+    color: var(--on-surface-variant, #667085);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.breadcrumb-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.breadcrumb-item a {
+    color: var(--primary, #007cbd);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--primary-hover, #005a8c);
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    color: var(--outline, #98a2b3);
+    font-size: 0.8rem;
+    user-select: none;
+}
+
+.breadcrumb-item.active {
+    color: var(--on-surface, #1d2939);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .breadcrumb-nav {
+        padding: 0.75rem 1.5rem;
+    }
+}
+
