@@ -694,8 +694,7 @@ body.menu-open .nav-backdrop {
 .footer-logo {
     height: 48px;
     margin-bottom: 1.5rem;
-    /* Uses a CSS filter to make the SVG white, as the background is very dark */
-    filter: brightness(0) invert(1);
+    
 }
 
 .footer-text {
@@ -893,8 +892,7 @@ body.menu-open .nav-backdrop {
 .footer-logo {
     height: 48px;
     margin-bottom: 1.5rem;
-    /* Uses a CSS filter to make the SVG white, as the background is very dark */
-    filter: brightness(0) invert(1);
+   
 }
 
 .footer-text {

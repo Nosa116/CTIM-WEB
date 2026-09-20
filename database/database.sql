@@ -19,12 +19,12 @@ CREATE TABLE `admin_users` (
 
 --
 -- Dumping data for table `admin_users`
--- Default login: admin@christtemple.org / password123
+-- Default login: admin@christtempleintl.org / password123
 -- Password hash generated using password_hash('password123', PASSWORD_DEFAULT)
 --
 
 INSERT INTO `admin_users` (`id`, `email`, `password_hash`, `created_at`) VALUES
-(1, 'admin@christtemple.org', '$2y$10$nX2DCjWYg9X5kEGnCIplcOw7KBldUAsWZMPvjxHG5kKCkO4.RqYp2', current_timestamp());
+(1, 'admin@christtempleintl.org', '$2y$10$nX2DCjWYg9X5kEGnCIplcOw7KBldUAsWZMPvjxHG5kKCkO4.RqYp2', current_timestamp());
 
 -- --------------------------------------------------------
 
