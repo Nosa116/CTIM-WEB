@@ -112,10 +112,19 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
-.logo-container img {
+.logo-container a {
+    display: flex;
+    align-items: center;
     height: 100%;
+    text-decoration: none;
+}
+
+.logo-container img {
+    height: 42px;
+    max-height: 100%;
     width: auto;
     object-fit: contain;
+    display: block;
 }
 
 .nav-divider {
@@ -694,8 +703,7 @@ body.menu-open .nav-backdrop {
 .footer-logo {
     height: 48px;
     margin-bottom: 1.5rem;
-    /* Uses a CSS filter to make the SVG white, as the background is very dark */
-    filter: brightness(0) invert(1);
+    
 }
 
 .footer-text {
@@ -893,8 +901,7 @@ body.menu-open .nav-backdrop {
 .footer-logo {
     height: 48px;
     margin-bottom: 1.5rem;
-    /* Uses a CSS filter to make the SVG white, as the background is very dark */
-    filter: brightness(0) invert(1);
+   
 }
 
 .footer-text {
@@ -1042,8 +1049,7 @@ body.menu-open .nav-backdrop {
 /* --- Visit Section --- */
 .visit-section {
     padding: 6rem 4rem;
-    background-color: #050505;
-    /* Very dark background */
+    background-color: #06111f;
     color: #ffffff;
 }
 
@@ -1054,82 +1060,144 @@ body.menu-open .nav-backdrop {
 
 .visit-section-title {
     font-family: var(--font-ogg);
-    font-size: 2rem;
+    font-size: 2.25rem;
     font-weight: 500;
     line-height: 1.15;
-    margin-bottom: 2rem;
+    margin-bottom: 2.25rem;
     color: #ffffff;
 }
 
 .visit-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    /* Small gap between tiles */
+    gap: 1.5rem;
 }
 
 .visit-card {
     position: relative;
-    height: 400px;
-    /* Tall tiles */
-    background-size: cover;
-    background-position: center;
-    border-radius: 4px;
-    /* Slight rounding */
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 230px;
+    padding: 2.5rem 2.25rem;
+    background: linear-gradient(145deg, #0d1a2d 0%, #08111e 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    text-decoration: none;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, background 0.35s ease;
     cursor: pointer;
+    overflow: hidden;
+}
+
+.visit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary-container));
+    opacity: 0;
+    transition: opacity 0.35s ease;
 }
 
 .visit-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(-6px);
+    border-color: rgba(0, 124, 189, 0.45);
+    background: linear-gradient(145deg, #12243d 0%, #0b1728 100%);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 24px rgba(0, 124, 189, 0.15);
 }
 
-/* Gradient overlay for readability */
-.visit-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top,
-            rgba(0, 0, 0, 0.85) 0%,
-            rgba(0, 0, 0, 0.4) 30%,
-            transparent 100%);
-    z-index: 1;
+.visit-card:hover::before {
+    opacity: 1;
 }
 
-.visit-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 2rem;
-    z-index: 2;
-    text-align: left;
+.visit-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.visit-card-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--secondary-container);
+}
+
+.visit-card-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(0, 124, 189, 0.14);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.visit-card:hover .visit-card-icon {
+    background: var(--primary);
+    color: #ffffff;
+    transform: scale(1.08);
+}
+
+.visit-card-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.visit-card-body {
+    flex: 1;
 }
 
 .visit-heading {
-    font-family: var(--font-sans);
-    font-size: 1.75rem;
-    font-weight: 700;
+    font-family: var(--font-ogg);
+    font-size: 1.65rem;
+    font-weight: 500;
     color: #ffffff;
-    margin-bottom: 0.25rem;
-    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
 }
 
 .visit-location {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.65);
     font-weight: 400;
+    line-height: 1.5;
+}
+
+.visit-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.75rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+    transition: color 0.3s ease, gap 0.3s ease;
+}
+
+.visit-card:hover .visit-card-footer {
+    color: #ffffff;
+    gap: 0.75rem;
+}
+
+.visit-card-footer .arrow {
+    transition: transform 0.3s ease;
+}
+
+.visit-card:hover .visit-card-footer .arrow {
+    transform: translateX(4px);
 }
 
 @media (max-width: 1024px) {
     .visit-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-
-    .visit-card {
-        height: 350px;
+        gap: 1.25rem;
     }
 }
 
@@ -1140,10 +1208,12 @@ body.menu-open .nav-backdrop {
 
     .visit-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .visit-card {
-        height: 300px;
+        padding: 2rem 1.5rem;
+        min-height: auto;
     }
 }
 
@@ -2924,24 +2994,21 @@ body.menu-open .nav-backdrop {
     height: 100%;
 }
 
-.location-image {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
 .map-embed-container {
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.05);
     background-color: var(--surface-dim);
+    height: 100%;
+    min-height: 340px;
 }
 
 .map-embed-container iframe {
     display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 340px;
 }
 
 /* What to Expect */
@@ -3402,6 +3469,11 @@ body.menu-open .nav-backdrop {
         height: 36px;
     }
 
+    .logo-container a,
+    .logo-container img {
+        height: 36px;
+    }
+
     /* Hero Typography Sizing */
     .hero-title,
     .about-hero-title,
@@ -3557,3 +3629,60 @@ body.menu-open .nav-backdrop {
         font-size: 0.9rem;
     }
 }
+
+/* --- SEO Breadcrumbs --- */
+.breadcrumb-nav {
+    padding: 1rem 4rem;
+    background-color: var(--surface-container-low, #f4f6f8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.breadcrumb-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.88rem;
+    color: var(--on-surface-variant, #667085);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.breadcrumb-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.breadcrumb-item a {
+    color: var(--primary, #007cbd);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--primary-hover, #005a8c);
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    color: var(--outline, #98a2b3);
+    font-size: 0.8rem;
+    user-select: none;
+}
+
+.breadcrumb-item.active {
+    color: var(--on-surface, #1d2939);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .breadcrumb-nav {
+        padding: 0.75rem 1.5rem;
+    }
+}
+
