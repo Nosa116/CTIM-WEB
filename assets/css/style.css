@@ -112,10 +112,19 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
-.logo-container img {
+.logo-container a {
+    display: flex;
+    align-items: center;
     height: 100%;
+    text-decoration: none;
+}
+
+.logo-container img {
+    height: 42px;
+    max-height: 100%;
     width: auto;
     object-fit: contain;
+    display: block;
 }
 
 .nav-divider {
@@ -3457,6 +3466,11 @@ body.menu-open .nav-backdrop {
     }
 
     .logo-container {
+        height: 36px;
+    }
+
+    .logo-container a,
+    .logo-container img {
         height: 36px;
     }
 
