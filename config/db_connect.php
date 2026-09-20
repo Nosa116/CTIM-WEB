@@ -3,7 +3,7 @@
 
 $servername = "localhost";
 $username = "u815552151_ctim"; // Default XAMPP username
-$password = "christtempleintlministry@gmail.com"; // Default XAMPP password is empty
+$password = "Christtempleintlministry@gmail.com1"; // Default XAMPP password is empty
 $dbname = "u815552151_database"; // The name of the database we created
 
 // Create connection
