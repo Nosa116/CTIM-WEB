@@ -2,9 +2,9 @@
 // db_connect.php
 
 $servername = "localhost";
-$username = "root"; // Default XAMPP username
-$password = ""; // Default XAMPP password is empty
-$dbname = "ctim_sermons"; // The name of the database we created
+$username = "u815552151_ctim"; // Default XAMPP username
+$password = "Christtempleintlministry@gmail.com1"; // Default XAMPP password is empty
+$dbname = "u815552151_database"; // The name of the database we created
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
